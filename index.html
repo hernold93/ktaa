@@ -3,99 +3,167 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
 <title>קטע שכתבתי</title>
+<meta name="description" content="מקום לפרסם קטע ולקבל עליו קריאה אמיתית.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;800&family=Heebo:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EDEEF0;
+    --paper:#F4F4F1;
     --surface:#FFFFFF;
-    --ink:#191C22;
-    --muted:#5F6672;
-    --line:#DCDFE4;
-    --accent:#2F5D50;
-    --accent-soft:#E4EBE8;
+    --ink:#14213D;
+    --ink-soft:#2E3853;
+    --muted:#5A6274;
+    --line:#DFDFDA;
+    --mark:#B23A48;
+    --mark-soft:#F3E4E5;
+    --serif:'Frank Ruhl Libre',Georgia,serif;
+    --sans:'Heebo',system-ui,-apple-system,sans-serif;
+    --read:34rem;
   }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#12141A;
+      --surface:#191C24;
+      --ink:#E9E9E5;
+      --ink-soft:#C7CAD2;
+      --muted:#969CA8;
+      --line:#272B35;
+      --mark:#E0707C;
+      --mark-soft:#2A1D20;
+    }
+  }
+
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Heebo',system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-text-size-adjust:100%;
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16px;line-height:1.6;
+    text-rendering:optimizeLegibility;
   }
-  a{color:var(--accent);text-decoration:none}
-  a:hover{text-decoration:underline}
-  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:2px solid var(--mark);outline-offset:3px;border-radius:2px}
+  ::selection{background:var(--mark-soft)}
 
-  .wrap{max-width:640px;margin:0 auto;padding:0 20px}
+  .wrap{max-width:44rem;margin:0 auto;padding:0 1.5rem}
+  .read{max-width:var(--read)}
 
-  header{border-bottom:1px solid var(--line);background:var(--surface)}
-  .bar{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:18px 0}
-  .brand{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:24px;font-weight:700;color:var(--ink)}
-  .brand:hover{text-decoration:none}
-  nav{display:flex;gap:16px;align-items:baseline;font-size:15px}
+  /* ---------- כותרת עליונה ---------- */
+  header{border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 0}
+  .brand{font-family:var(--serif);font-size:1.4rem;font-weight:800;letter-spacing:-.01em}
+  nav{display:flex;gap:1.1rem;align-items:center;font-size:.94rem;color:var(--muted)}
+  nav a:hover{color:var(--ink)}
+  nav .who{color:var(--ink);font-weight:500}
 
-  main{padding:32px 0 80px}
+  main{padding:2.5rem 0 6rem}
 
-  h1,h2,h3{font-family:'Frank Ruhl Libre',Georgia,serif;font-weight:700;line-height:1.25;margin:0}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.2;margin:0;letter-spacing:-.01em}
 
-  /* ---- פיד ---- */
-  .lead{padding-bottom:28px;margin-bottom:8px;border-bottom:1px solid var(--line)}
-  .lead h2{font-size:30px;margin-bottom:10px}
-  .item{padding:22px 0;border-bottom:1px solid var(--line)}
-  .item h3{font-size:20px;margin-bottom:6px}
-  .item h3 a{color:var(--ink)}
+  /* ---------- פתיח ---------- */
+  .intro{margin-bottom:3rem}
+  .intro h1{font-size:2.3rem;font-weight:800;margin-bottom:.6rem}
+  .intro p{font-family:var(--serif);font-size:1.15rem;line-height:1.65;color:var(--ink-soft);margin:0;max-width:28rem}
+
+  /* ---------- קטע מוביל ---------- */
+  .lead{padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:.5rem}
+  .lead h2{font-size:1.85rem;margin-bottom:.45rem}
+  .lead .excerpt{
+    border-inline-start:2px solid var(--mark);
+    padding-inline-start:1.1rem;margin:1.1rem 0 .9rem;
+  }
+
+  /* ---------- פריטי פיד ---------- */
+  .item{padding:1.9rem 0;border-bottom:1px solid var(--line)}
+  .item h3{font-size:1.25rem;margin-bottom:.35rem}
+  .item h3 a:hover{color:var(--mark)}
   .excerpt{
-    font-family:'Frank Ruhl Libre',Georgia,serif;
-    font-size:17px;line-height:1.75;color:#2C3038;
-    margin:0 0 8px;white-space:pre-wrap;
+    font-family:var(--serif);font-size:1.06rem;line-height:1.8;
+    color:var(--ink-soft);margin:.6rem 0 .7rem;white-space:pre-wrap;
+    max-width:var(--read);
   }
-  .meta{font-size:13.5px;color:var(--muted)}
-  .meta a{color:var(--muted);text-decoration:underline;text-underline-offset:2px}
+  .meta{font-size:.85rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+  .meta .name{color:var(--ink);font-weight:500}
+  .meta .name:hover{color:var(--mark)}
+  .dot{opacity:.4}
+  .tag{
+    font-size:.78rem;color:var(--mark);background:var(--mark-soft);
+    padding:.12rem .55rem;border-radius:2px;
+  }
 
-  /* ---- עמוד קטע ---- */
-  .piece h1{font-size:28px;margin-bottom:8px}
+  /* ---------- עמוד קטע ---------- */
+  .piece h1{font-size:2.1rem;font-weight:800;margin-bottom:.6rem}
   .piece .body{
-    font-family:'Frank Ruhl Libre',Georgia,serif;
-    font-size:18px;line-height:1.85;white-space:pre-wrap;
-    margin:24px 0 32px;
+    font-family:var(--serif);font-size:1.18rem;line-height:1.95;
+    white-space:pre-wrap;margin:2rem 0;max-width:var(--read);
   }
-  .rule{border:0;border-top:1px solid var(--line);margin:32px 0}
+  .rule{border:0;border-top:1px solid var(--line);margin:2.5rem 0}
 
-  .comment{padding:16px 0;border-bottom:1px solid var(--line)}
-  .comment p{margin:0 0 6px;white-space:pre-wrap}
+  .fb-head{margin-bottom:1.4rem}
+  .fb-head h3{font-size:1.3rem;margin-bottom:.25rem}
+  .fb-head p{font-size:.92rem;color:var(--muted);margin:0}
 
-  /* ---- טפסים ---- */
-  label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
+  .comment{
+    border-inline-start:2px solid var(--mark);
+    padding:.1rem 1rem .1rem;margin-bottom:1.6rem;
+  }
+  .comment p{margin:0 0 .4rem;white-space:pre-wrap;font-size:1rem;line-height:1.7;max-width:var(--read)}
+
+  /* ---------- טפסים ---------- */
+  label{display:block;font-size:.86rem;color:var(--muted);margin-bottom:.4rem}
   input,textarea,select{
-    width:100%;font-family:inherit;font-size:16px;color:var(--ink);
-    background:var(--surface);border:1px solid var(--line);border-radius:4px;
-    padding:10px 12px;margin-bottom:18px;
+    width:100%;font-family:var(--sans);font-size:1rem;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line);border-radius:3px;
+    padding:.65rem .8rem;margin-bottom:1.3rem;
   }
-  textarea{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:17px;line-height:1.75;resize:vertical}
-  input:focus,textarea:focus,select:focus{border-color:var(--accent);outline:none}
+  textarea{font-family:var(--serif);font-size:1.1rem;line-height:1.85;resize:vertical}
+  input:focus,textarea:focus,select:focus{border-color:var(--mark);outline:none}
+  ::placeholder{color:var(--muted);opacity:.65}
+
   button{
-    font-family:inherit;font-size:16px;font-weight:500;cursor:pointer;
-    background:var(--accent);color:#fff;border:0;border-radius:4px;padding:11px 22px;
+    font-family:var(--sans);font-size:.98rem;font-weight:500;cursor:pointer;
+    background:var(--ink);color:var(--paper);border:0;border-radius:3px;
+    padding:.7rem 1.5rem;
   }
-  button:hover{background:#264A40}
-  button.ghost{background:none;color:var(--accent);padding:0;font-size:14px}
-  button.ghost:hover{background:none;text-decoration:underline}
-  button[disabled]{opacity:.5;cursor:default}
+  button:hover{background:var(--mark);color:#fff}
+  button[disabled]{opacity:.45;cursor:default}
+  button[disabled]:hover{background:var(--ink)}
+  button.plain{
+    background:none;color:var(--muted);padding:0;font-size:.86rem;
+    text-decoration:underline;text-underline-offset:3px;
+  }
+  button.plain:hover{background:none;color:var(--mark)}
 
-  .tabs{display:flex;gap:20px;margin-bottom:24px;font-size:15px}
-  .tabs button{background:none;color:var(--muted);padding:0 0 6px;border-bottom:2px solid transparent;border-radius:0}
-  .tabs button.on{color:var(--ink);border-bottom-color:var(--accent)}
-  .tabs button:hover{background:none}
+  .tabs{display:flex;gap:1.6rem;margin-bottom:2rem;border-bottom:1px solid var(--line)}
+  .tabs button{
+    background:none;color:var(--muted);padding:0 0 .7rem;border-radius:0;
+    border-bottom:2px solid transparent;margin-bottom:-1px;font-size:1rem;
+  }
+  .tabs button.on{color:var(--ink);border-bottom-color:var(--mark)}
+  .tabs button:hover{background:none;color:var(--ink)}
 
-  .note{background:var(--accent-soft);border-radius:4px;padding:14px 16px;font-size:14.5px;margin-bottom:24px}
-  .error{color:#8C2F26;font-size:14.5px;margin-bottom:16px}
-  .empty{color:var(--muted);padding:40px 0;text-align:center}
-  .quiet{color:var(--muted);font-size:14px}
+  .callout{
+    border-inline-start:2px solid var(--line);
+    padding-inline-start:1rem;font-size:.94rem;color:var(--muted);margin:2rem 0 0;
+  }
+  .err{color:var(--mark);font-size:.9rem;margin:-.5rem 0 1rem}
+  .quiet{color:var(--muted);font-size:.9rem}
+
+  /* ---------- מצב ריק ---------- */
+  .empty{padding:3.5rem 0}
+  .empty h2{font-size:1.7rem;margin-bottom:.6rem}
+  .empty p{font-family:var(--serif);font-size:1.1rem;color:var(--ink-soft);margin:0 0 1.6rem;max-width:26rem;line-height:1.7}
+
+  footer{border-top:1px solid var(--line);padding:1.6rem 0;font-size:.82rem;color:var(--muted)}
+
+  @media (max-width:520px){
+    .intro h1{font-size:1.85rem}
+    .piece h1{font-size:1.65rem}
+    .lead h2{font-size:1.5rem}
+    .piece .body{font-size:1.1rem;line-height:1.85}
+  }
 </style>
 </head>
 <body>
@@ -109,20 +177,22 @@
 
 <main class="wrap" id="app"></main>
 
+<footer class="wrap">קטע שכתבתי · קהילת כותבים בעברית</footer>
+
 <script type="module">
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
 /* ============================================================
-   1. הדבק כאן את שני הערכים מ-Supabase → Settings → API
+   הדבק כאן את שני הערכים מ-Supabase
    ============================================================ */
-const SUPABASE_URL = 'https://tietxwcddvzzkzwuuyqd.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_g5tKuNzV5UST6RMAPcAwOQ_x1IXUg_G';
+const SUPABASE_URL = 'https://xxxxxxxx.supabase.co';
+const SUPABASE_ANON_KEY = 'הדבק-כאן-את-מפתח-ה-anon';
 
 const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const app = document.getElementById('app');
 const nav = document.getElementById('nav');
-let me = null;          // { id, pen_name }
+let me = null;
 const GENRES = ['פרוזה','שירה','סיפור קצר','פרק מספר','מחשבה','אחר'];
 
 /* ---------- עזרים ---------- */
@@ -134,9 +204,10 @@ const when = ts => new Date(ts).toLocaleDateString('he-IL',
 
 const cut = (t,n) => t.length > n ? t.slice(0,n).trimEnd() + '…' : t;
 
-const go = hash => { location.hash = hash; };
+const words = t => t.trim().split(/\s+/).filter(Boolean).length;
 
-function show(html){ app.innerHTML = html; }
+const go = hash => { location.hash = hash; };
+const show = html => { app.innerHTML = html; };
 
 /* ---------- מצב התחברות ---------- */
 async function loadMe(){
@@ -150,8 +221,8 @@ async function loadMe(){
 function paintNav(){
   nav.innerHTML = me
     ? `<a href="#/new">קטע חדש</a>
-       <a href="#/author/${me.id}">${esc(me.pen_name)}</a>
-       <button class="ghost" id="out">יציאה</button>`
+       <a class="who" href="#/author/${me.id}">${esc(me.pen_name)}</a>
+       <button class="plain" id="out">יציאה</button>`
     : `<a href="#/enter">כניסה</a>`;
   const out = document.getElementById('out');
   if (out) out.onclick = async () => {
@@ -166,35 +237,43 @@ async function viewFeed(){
     .select('id, title, body, genre, created_at, profiles(id, pen_name)')
     .order('created_at', { ascending:false }).limit(30);
 
-  if (error) return show(`<p class="error">לא הצלחנו לטעון את הקטעים. ${esc(error.message)}</p>`);
+  if (error) return show(`<p class="err">לא הצלחנו לטעון את הקטעים. ${esc(error.message)}</p>`);
 
-  if (!data.length) return show(`
+  const intro = `
+    <div class="intro">
+      <h1>קטע שכתבתי</h1>
+      <p>מקום לפרסם קטע ולקבל עליו קריאה אמיתית — לא לייק, קריאה.</p>
+    </div>`;
+
+  if (!data.length) return show(intro + `
     <div class="empty">
-      <h2 style="font-size:26px;margin-bottom:10px">עוד לא פורסם כאן כלום</h2>
-      <p>הקטע הראשון יהיה שלך.</p>
-      <p style="margin-top:20px"><a href="#/new">פרסמו קטע</a></p>
+      <h2>הדף עוד ריק</h2>
+      <p>הקטע הראשון כאן יהיה זה שקובע איזה מקום זה יהיה. אין מינימום אורך ואין צורך שיהיה גמור.</p>
+      <a href="#/new"><button>פרסמו קטע</button></a>
     </div>`);
 
   const [first, ...rest] = data;
-  show(`
+  show(intro + `
     <article class="lead">
-      <h2><a href="#/piece/${first.id}" style="color:var(--ink)">${esc(first.title)}</a></h2>
-      <p class="excerpt">${esc(cut(first.body, 420))}</p>
-      <p class="meta">${authorLine(first)}</p>
+      <h2><a href="#/piece/${first.id}">${esc(first.title)}</a></h2>
+      <p class="meta">${metaLine(first)}</p>
+      <div class="excerpt">${esc(cut(first.body, 420))}</div>
+      <a href="#/piece/${first.id}" class="quiet" style="text-decoration:underline;text-underline-offset:3px">להמשך הקריאה</a>
     </article>
     ${rest.map(p => `
       <article class="item">
         <h3><a href="#/piece/${p.id}">${esc(p.title)}</a></h3>
-        <p class="excerpt">${esc(cut(p.body, 180))}</p>
-        <p class="meta">${authorLine(p)}</p>
+        <p class="meta">${metaLine(p)}</p>
+        <div class="excerpt">${esc(cut(p.body, 170))}</div>
       </article>`).join('')}
   `);
 }
 
-function authorLine(p){
+function metaLine(p){
   const a = p.profiles;
-  const g = p.genre ? ` · ${esc(p.genre)}` : '';
-  return `<a href="#/author/${a?.id ?? ''}">${esc(a?.pen_name ?? 'כותב/ת')}</a> · ${when(p.created_at)}${g}`;
+  return `<a class="name" href="#/author/${a?.id ?? ''}">${esc(a?.pen_name ?? 'כותב/ת')}</a>
+    <span class="dot">·</span> ${when(p.created_at)}
+    ${p.genre ? `<span class="tag">${esc(p.genre)}</span>` : ''}`;
 }
 
 /* ---------- עמוד קטע ---------- */
@@ -203,42 +282,46 @@ async function viewPiece(id){
   const { data:p, error } = await db.from('pieces')
     .select('id, title, body, genre, created_at, author_id, profiles(id, pen_name)')
     .eq('id', id).single();
-  if (error || !p) return show('<p class="error">הקטע הזה לא נמצא.</p>');
+  if (error || !p) return show('<p class="err">הקטע הזה לא נמצא.</p>');
 
   const { data:cs } = await db.from('comments')
     .select('id, body, created_at, author_id, profiles(id, pen_name)')
     .eq('piece_id', id).order('created_at');
 
+  const n = (cs ?? []).length;
+
   show(`
     <article class="piece">
       <h1>${esc(p.title)}</h1>
-      <p class="meta">${authorLine(p)}</p>
+      <p class="meta">${metaLine(p)} <span class="dot">·</span> ${words(p.body)} מילים</p>
       <div class="body">${esc(p.body)}</div>
       ${me && me.id === p.author_id
-        ? `<button class="ghost" id="del">מחיקת הקטע</button>` : ''}
+        ? `<button class="plain" id="del">מחיקת הקטע</button>` : ''}
     </article>
 
     <hr class="rule">
-    <h3 style="font-size:19px;margin-bottom:4px">משוב</h3>
-    <p class="quiet" style="margin:0 0 18px">כתבו מה עבד, מה צרם, ואיפה איבדתם עניין.</p>
 
-    <div id="comments">
-      ${(cs ?? []).length ? cs.map(c => `
-        <div class="comment">
-          <p>${esc(c.body)}</p>
-          <p class="meta"><a href="#/author/${c.profiles?.id ?? ''}">${esc(c.profiles?.pen_name ?? '')}</a> · ${when(c.created_at)}</p>
-        </div>`).join('')
-        : '<p class="quiet" style="padding:8px 0 20px">אין עדיין משוב.</p>'}
+    <div class="fb-head">
+      <h3>${n ? `משוב · ${n}` : 'משוב'}</h3>
+      <p>מה עבד, מה צרם, ואיפה איבדתם עניין.</p>
     </div>
 
+    ${n ? cs.map(c => `
+      <div class="comment">
+        <p>${esc(c.body)}</p>
+        <p class="meta"><a class="name" href="#/author/${c.profiles?.id ?? ''}">${esc(c.profiles?.pen_name ?? '')}</a>
+          <span class="dot">·</span> ${when(c.created_at)}</p>
+      </div>`).join('')
+      : '<p class="quiet" style="margin-bottom:2rem">עוד לא נכתב משוב. תהיו הראשונים.</p>'}
+
     ${me ? `
-      <div style="margin-top:24px">
+      <div style="margin-top:2rem">
         <label for="cbody">המשוב שלך</label>
-        <textarea id="cbody" rows="4" placeholder="מה עבד בשבילך בקטע הזה?"></textarea>
-        <p class="error" id="cerr" hidden></p>
+        <textarea id="cbody" rows="4" placeholder="שורה אחת מספיקה, אבל שלוש עוזרות יותר."></textarea>
+        <p class="err" id="cerr" hidden></p>
         <button id="csend">שליחת משוב</button>
       </div>`
-      : `<p class="note" style="margin-top:24px"><a href="#/enter">היכנסו</a> כדי להגיב.</p>`}
+      : `<p class="callout"><a href="#/enter" style="text-decoration:underline;text-underline-offset:3px">היכנסו</a> כדי לכתוב משוב.</p>`}
   `);
 
   const del = document.getElementById('del');
@@ -268,23 +351,29 @@ async function viewAuthor(id){
   show('<p class="quiet">טוען…</p>');
   const { data:prof } = await db.from('profiles')
     .select('id, pen_name, bio').eq('id', id).single();
-  if (!prof) return show('<p class="error">הכותב/ת לא נמצאו.</p>');
+  if (!prof) return show('<p class="err">הכותב/ת לא נמצאו.</p>');
 
   const { data:ps } = await db.from('pieces')
     .select('id, title, body, genre, created_at, profiles(id, pen_name)')
     .eq('author_id', id).order('created_at', { ascending:false });
 
+  const n = (ps ?? []).length;
+
   show(`
-    <h1 style="font-size:26px">${esc(prof.pen_name)}</h1>
-    ${prof.bio ? `<p class="quiet" style="margin-top:6px">${esc(prof.bio)}</p>` : ''}
-    <p class="quiet" style="margin:6px 0 24px">${(ps ?? []).length} קטעים</p>
-    ${(ps ?? []).length ? ps.map(p => `
+    <div class="intro">
+      <h1>${esc(prof.pen_name)}</h1>
+      ${prof.bio ? `<p>${esc(prof.bio)}</p>` : ''}
+      <p class="quiet" style="margin-top:.5rem;font-family:var(--sans)">
+        ${n === 0 ? 'עוד לא פורסמו קטעים' : n === 1 ? 'קטע אחד' : n + ' קטעים'}
+      </p>
+    </div>
+    ${n ? ps.map(p => `
       <article class="item">
         <h3><a href="#/piece/${p.id}">${esc(p.title)}</a></h3>
-        <p class="excerpt">${esc(cut(p.body, 150))}</p>
-        <p class="meta">${when(p.created_at)}${p.genre ? ' · ' + esc(p.genre) : ''}</p>
-      </article>`).join('')
-      : '<p class="quiet">עוד לא פורסמו קטעים.</p>'}
+        <p class="meta">${when(p.created_at)}
+          ${p.genre ? `<span class="tag">${esc(p.genre)}</span>` : ''}</p>
+        <div class="excerpt">${esc(cut(p.body, 150))}</div>
+      </article>`).join('') : ''}
   `);
 }
 
@@ -292,14 +381,14 @@ async function viewAuthor(id){
 function viewNew(){
   if (!me) return go('#/enter');
   show(`
-    <h1 style="font-size:24px;margin-bottom:20px">קטע חדש</h1>
+    <div class="intro"><h1>קטע חדש</h1></div>
     <label for="t">כותרת</label>
-    <input id="t" maxlength="120">
+    <input id="t" maxlength="120" placeholder="גם כותרת זמנית עובדת">
     <label for="g">סוג</label>
     <select id="g">${GENRES.map(x => `<option>${x}</option>`).join('')}</select>
     <label for="b">הקטע</label>
-    <textarea id="b" rows="16" placeholder="הדביקו או כתבו כאן."></textarea>
-    <p class="error" id="err" hidden></p>
+    <textarea id="b" rows="16" placeholder="הדביקו או כתבו כאן. לא חייב להיות גמור."></textarea>
+    <p class="err" id="err" hidden></p>
     <button id="save">פרסום</button>
   `);
 
@@ -327,15 +416,16 @@ function viewNew(){
 function viewEnter(mode = 'in'){
   show(`
     <div class="tabs">
-      <button id="tin"  class="${mode==='in' ?'on':''}">כניסה</button>
+      <button id="tin" class="${mode==='in'?'on':''}">כניסה</button>
       <button id="tup" class="${mode==='up'?'on':''}">הרשמה</button>
     </div>
-    ${mode==='up' ? `<label for="pn">שם כותב/ת</label><input id="pn" maxlength="40">` : ''}
+    ${mode==='up' ? `<label for="pn">שם כותב/ת</label>
+      <input id="pn" maxlength="40" placeholder="השם שיופיע מעל הקטעים שלך">` : ''}
     <label for="em">אימייל</label>
     <input id="em" type="email" autocomplete="email">
     <label for="pw">סיסמה</label>
     <input id="pw" type="password" autocomplete="${mode==='up'?'new-password':'current-password'}">
-    <p class="error" id="err" hidden></p>
+    <p class="err" id="err" hidden></p>
     <button id="btn">${mode==='up' ? 'פתיחת חשבון' : 'כניסה'}</button>
   `);
 
@@ -349,7 +439,7 @@ function viewEnter(mode = 'in'){
     const btn = document.getElementById('btn');
     err.hidden = true;
     if (!email || password.length < 6) {
-      err.textContent = 'אימייל וסיסמה באורך 6 תווים לפחות.'; err.hidden = false; return;
+      err.textContent = 'צריך אימייל וסיסמה באורך 6 תווים לפחות.'; err.hidden = false; return;
     }
     btn.disabled = true;
     let res;
@@ -368,8 +458,7 @@ function viewEnter(mode = 'in'){
 
 /* ---------- ניתוב ---------- */
 function route(){
-  const h = location.hash || '#/';
-  const [, seg, arg] = h.split('/');
+  const [, seg, arg] = (location.hash || '#/').split('/');
   window.scrollTo(0,0);
   if (seg === 'piece')  return viewPiece(arg);
   if (seg === 'author') return viewAuthor(arg);
